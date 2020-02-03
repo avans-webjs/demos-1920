@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Dom events</h1>
+
+    <div class="content">
+        <div id="1" class="container">
+            1
+            <div id="2" class="container">
+                2
+                <div id="3" class="container">
+                    3
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let containers = document.querySelectorAll('.container');
+    
+    for (i = 0; i < containers.length; ++i) {             
+        containers[i].addEventListener('click', displayEvent);
+    }
+
+    function displayEvent(e){
+        var phase = e.eventPhase;
+       
+        switch(phase)
+        {
+            case 1: phase = "Capturing"; break;
+            case 2: phase = "Target"; break;
+            case 3: phase = "Bubbling"; break;
+        }
+
+        console.log(`Bog: ${this.id}, Phase: ${phase}`)
+
+    }
+
+
+
+    let event = {
+        eventPhase: 1,
+    };
+
+    displayEvent(event);
+</script>
+</html>
