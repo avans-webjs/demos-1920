@@ -1,0 +1,53 @@
+<html>
+  <head>
+  </head>
+  <body>
+    
+      <div id="myDiv2">
+
+        </div>
+     <script>
+         //change to make mom happy
+      let isMomHappy = false;
+
+// Promise
+let willIGetNewPhone = new Promise(
+    function (resolve, reject) {
+        if (isMomHappy) {
+            let phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone); // fulfilled
+        } else {
+            let reason = new Error('mom is not happy');
+            reject(reason); // reject
+        }
+
+    }
+);
+
+// call our promise
+let askMom = function () {
+    willIGetNewPhone
+        .then(function (fulfilled) {
+            // yay, you got a new phone
+            console.log(fulfilled);
+         // output: { brand: 'Samsung', color: 'black' }
+        })
+        .catch(function (error) {
+            // oops, mom don't buy it
+            console.log(error.message);
+         // output: 'mom is not happy'
+        });
+};
+
+askMom();
+
+//more info:  https://scotch.io/tutorials/javascript-promises-for-dummies
+</script>
+
+  </body>
+</html>
+
+

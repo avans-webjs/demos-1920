@@ -1,0 +1,25 @@
+<html>
+  <head>
+  </head>
+  <body>
+    
+      <div id="myDiv2">
+
+        </div>
+     <script>
+         //from : https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+        //Fetch returns a Promise!
+        fetch('https://reqres.in/api/unknown')
+        .then(function(response) {
+            return response.json(); 
+        })
+        .then(function(myJson) {
+        document.getElementById("myDiv2").innerHTML = JSON.stringify(myJson);
+        });
+
+</script>
+
+  </body>
+</html>
+
+
